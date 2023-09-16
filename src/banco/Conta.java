@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Conta {
 
-    Pessoa titular;
-    int agecia;
-    int numero;
-    double saldo;
+    private Pessoa titular;
+    private int agecia;
+    private int numero;
+    private double saldo;
 
     Conta(){
 
@@ -47,5 +47,28 @@ public class Conta {
     void sacar(double valor, double taxaSaque){
        sacar(valor + taxaSaque);
     }
+
+    public Pessoa getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Pessoa titular) {
+        this.titular = titular;
+    }
+
+    public int getAgecia() {
+        return agecia;
+    }
+
+
+    public int getNumero() {
+        return numero;
+    }
+
+
+    public double getSaldo() {
+        return saldo;
+    }
+
 
 }

@@ -1,3 +1,5 @@
+package Aula1Introducao;
+
 public class CalculadoraJurosCompostosMeta {
 
     public static void main(String[] args) {
