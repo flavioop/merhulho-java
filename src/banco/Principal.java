@@ -12,19 +12,24 @@ public class Principal {
         titular2.nome = "Maria Abadia";
         titular2.documento = "22222236666511";
 
-        Conta minhaConta = new Conta();
+        Conta minhaConta = new Conta(titular1,123,987);
 
-        minhaConta.titular = titular1;
+       /* minhaConta.titular = titular1;
         minhaConta.agecia = 123;
         minhaConta.numero = 987;
-        minhaConta.saldo = 15.000;
+        //minhaConta.saldo = 15.000;*/
+
 
         Conta suaConta = new Conta();
 
         suaConta.titular = titular2;
         suaConta.agecia = 222;
         suaConta.numero = 333;
-        suaConta.saldo = 30.000;
+        //suaConta.saldo = 30.000;
+        suaConta.depositar(30.000);
+        minhaConta.depositar(15.000);
+
+        minhaConta.sacar(1.000, 10);
 
         System.out.println("Titular: " + minhaConta.titular.nome);
         System.out.println("Titular: " + minhaConta.saldo);
