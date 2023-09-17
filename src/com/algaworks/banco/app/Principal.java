@@ -1,6 +1,10 @@
 package com.algaworks.banco.app;
 
 import com.algaworks.banco.modelo.*;
+import com.algaworks.banco.modelo.atm.CaixaEletronico;
+import com.algaworks.banco.modelo.pagamento.Boleto;
+import com.algaworks.banco.modelo.pagamento.DocumentoPagavel;
+import com.algaworks.banco.modelo.pagamento.Holerite;
 
 public class Principal {
 
@@ -15,9 +19,12 @@ public class Principal {
         titular2.setDocumento("22222236666511");
 
         ContaInvestimento minhaContaIvestimento = new ContaInvestimento(titular1,123,987);
+        ContaEspecial contaEspecial = new ContaEspecial(titular1, 222, 333, 1000);
+        CaixaEletronico caixaEletronico = new CaixaEletronico();
+
         /*Conta minhaConta = new Conta(titular1,123,987);
         Conta suaConta = new Conta(titular2, 222, 333);*/
-        ContaEspecial contaEspecial = new ContaEspecial(titular1, 222, 333, 1000);
+
        /* minhaConta.titular = titular1;
         minhaConta.agecia = 123;
         minhaConta.numero = 987;
@@ -25,7 +32,9 @@ public class Principal {
 
 
 
-        CaixaEletronico caixaEletronico = new CaixaEletronico();
+
+
+
 
 
         /*suaConta.setTitular(titular2);
@@ -37,8 +46,8 @@ public class Principal {
         contaEspecial.sacar(1_000);
 
 
-        minhaContaIvestimento.depositar(15_000);
-        minhaContaIvestimento.sacar(1_000);
+        minhaContaIvestimento.depositar(45_000);
+        minhaContaIvestimento.sacar(0_050);
         minhaContaIvestimento.creditarRendimentos(0.8);
         minhaContaIvestimento.debitarTarifaMensal();
 
@@ -46,8 +55,22 @@ public class Principal {
         contaEspecial.depositar(30.000);
         contaEspecial.depositar(15.000);
 
-        contaEspecial.sacar(0.000, 10);
+        contaEspecial.sacar(1.000, 10);
         contaEspecial.debitarTarifaMensal();
+
+
+        Boleto boletoEscola = new Boleto(titular2, 20);
+        Holerite salarioFuncionario = new Holerite(titular2, 100, 16);
+
+        System.out.println("Boleto pago:" + boletoEscola.estapago());
+
+        caixaEletronico.pagar(boletoEscola, contaEspecial);
+        caixaEletronico.pagar(salarioFuncionario, minhaContaIvestimento);
+        caixaEletronico.estornarPagamento(boletoEscola, minhaContaIvestimento);
+
+        System.out.println("Boleto pago:" + boletoEscola.estapago());
+        System.out.println("Salario pago:" + salarioFuncionario.estapago());
+
 
         caixaEletronico.impressaoSaldo(minhaContaIvestimento);
 
