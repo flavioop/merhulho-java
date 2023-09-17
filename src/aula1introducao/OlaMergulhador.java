@@ -1,4 +1,4 @@
-package Aula1Introducao;
+package aula1introducao;
 
 public class OlaMergulhador {
 

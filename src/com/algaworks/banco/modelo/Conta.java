@@ -1,4 +1,4 @@
-package banco;
+package com.algaworks.banco.modelo;
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ public class Conta {
     Conta(){
 
     }
-    Conta(Pessoa titular, int agecia, int numero){
+    public Conta(Pessoa titular, int agecia, int numero){
 
         Objects.requireNonNull(titular);
 
@@ -24,7 +24,7 @@ public class Conta {
 
 
 
-    void depositar(double valor){
+    public void depositar(double valor){
         if (valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0");
         }
@@ -32,7 +32,7 @@ public class Conta {
 
     }
 
-    void sacar(double valor){
+    public void sacar(double valor){
 
         if (valor <= 0){
             throw new IllegalArgumentException("Valor deve ser maior que 0");
@@ -44,8 +44,9 @@ public class Conta {
         saldo = saldo - valor;
     }
 
-    void sacar(double valor, double taxaSaque){
-       sacar(valor + taxaSaque);
+    public void sacar(double valor, double taxaSaque){
+
+        sacar(valor + taxaSaque);
     }
 
     public Pessoa getTitular() {
@@ -67,6 +68,10 @@ public class Conta {
 
 
     public double getSaldo() {
+        return saldo;
+    }
+
+    public double getSaldoDisponivel(){
         return saldo;
     }
 
