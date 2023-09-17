@@ -15,15 +15,16 @@ public class Principal {
         titular2.setDocumento("22222236666511");
 
         ContaInvestimento minhaContaIvestimento = new ContaInvestimento(titular1,123,987);
-        Conta minhaConta = new Conta(titular1,123,987);
-        Conta suaConta = new Conta(titular2, 222, 333);
+        /*Conta minhaConta = new Conta(titular1,123,987);
+        Conta suaConta = new Conta(titular2, 222, 333);*/
         ContaEspecial contaEspecial = new ContaEspecial(titular1, 222, 333, 1000);
        /* minhaConta.titular = titular1;
         minhaConta.agecia = 123;
         minhaConta.numero = 987;
         minhaConta.saldo = 15.000;*/
 
-        Conta conta = minhaConta;
+
+
         CaixaEletronico caixaEletronico = new CaixaEletronico();
 
 
@@ -39,12 +40,14 @@ public class Principal {
         minhaContaIvestimento.depositar(15_000);
         minhaContaIvestimento.sacar(1_000);
         minhaContaIvestimento.creditarRendimentos(0.8);
+        minhaContaIvestimento.debitarTarifaMensal();
 
 
-        suaConta.depositar(30.000);
-        minhaConta.depositar(15.000);
+        contaEspecial.depositar(30.000);
+        contaEspecial.depositar(15.000);
 
-        minhaConta.sacar(0.000, 10);
+        contaEspecial.sacar(0.000, 10);
+        contaEspecial.debitarTarifaMensal();
 
         caixaEletronico.impressaoSaldo(minhaContaIvestimento);
 

@@ -2,7 +2,7 @@ package com.algaworks.banco.modelo;
 
 import java.util.Objects;
 
-public class Conta {
+public abstract class Conta {
 
     private Pessoa titular;
     private int agecia;
@@ -48,6 +48,12 @@ public class Conta {
 
         sacar(valor + taxaSaque);
     }
+
+    public abstract void debitarTarifaMensal();
+
+
+
+
 
     public Pessoa getTitular() {
         return titular;
