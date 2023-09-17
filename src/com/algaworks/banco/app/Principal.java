@@ -1,9 +1,6 @@
 package com.algaworks.banco.app;
 
-import com.algaworks.banco.modelo.Conta;
-import com.algaworks.banco.modelo.ContaEspecial;
-import com.algaworks.banco.modelo.ContaInvestimento;
-import com.algaworks.banco.modelo.Pessoa;
+import com.algaworks.banco.modelo.*;
 
 public class Principal {
 
@@ -26,7 +23,8 @@ public class Principal {
         minhaConta.numero = 987;
         minhaConta.saldo = 15.000;*/
 
-
+        Conta conta = minhaConta;
+        CaixaEletronico caixaEletronico = new CaixaEletronico();
 
 
         /*suaConta.setTitular(titular2);
@@ -48,8 +46,9 @@ public class Principal {
 
         minhaConta.sacar(0.000, 10);
 
+        caixaEletronico.impressaoSaldo(minhaContaIvestimento);
 
-        System.out.println("Titular conta investimento: " + minhaContaIvestimento.getTitular().getNome());
+        /*System.out.println("Titular conta investimento: " + minhaContaIvestimento.getTitular().getNome());
         System.out.println("Titular conta investimento: " + minhaContaIvestimento.getSaldo());
 
         System.out.println("Titular minha conta: " + minhaConta.getTitular().getNome());
@@ -59,7 +58,7 @@ public class Principal {
         System.out.println("Titular sua conta: " + suaConta.getSaldo());
 
         System.out.println("Titular sua conta Especial: " + contaEspecial.getTitular().getNome());
-        System.out.println("Titular sua conta Especial: " + contaEspecial.getSaldo());
+        System.out.println("Titular sua conta Especial: " + contaEspecial.getSaldo());*/
 
     }
 }
