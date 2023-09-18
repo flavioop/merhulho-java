@@ -2,6 +2,7 @@ package com.algaworks.banco.app;
 
 import com.algaworks.banco.modelo.*;
 import com.algaworks.banco.modelo.atm.CaixaEletronico;
+import com.algaworks.banco.modelo.excecao.SaldoInsuficienteException;
 import com.algaworks.banco.modelo.pagamento.Boleto;
 import com.algaworks.banco.modelo.pagamento.DocumentoPagavel;
 import com.algaworks.banco.modelo.pagamento.Holerite;
@@ -43,36 +44,48 @@ public class Principal {
         //suaConta.saldo = 30.000;*/
 
         contaEspecial.depositar(15_000);
-        contaEspecial.sacar(1_000);
+
+        try {
+
+            contaEspecial.sacar(1_000);
 
 
-        minhaContaIvestimento.depositar(45_000);
-        minhaContaIvestimento.sacar(0_050);
-        minhaContaIvestimento.creditarRendimentos(0.8);
-        minhaContaIvestimento.debitarTarifaMensal();
+            minhaContaIvestimento.depositar(45_000);
+            minhaContaIvestimento.sacar(30_050);
+            minhaContaIvestimento.creditarRendimentos(0.8);
+            minhaContaIvestimento.debitarTarifaMensal();
 
 
-        contaEspecial.depositar(30.000);
-        contaEspecial.depositar(15.000);
+            contaEspecial.depositar(30.000);
+            contaEspecial.depositar(35.000);
 
-        contaEspecial.sacar(1.000, 10);
-        contaEspecial.debitarTarifaMensal();
-
-
-        Boleto boletoEscola = new Boleto(titular2, 20);
-        Holerite salarioFuncionario = new Holerite(titular2, 100, 16);
-
-        System.out.println("Boleto pago:" + boletoEscola.estapago());
-
-        caixaEletronico.pagar(boletoEscola, contaEspecial);
-        caixaEletronico.pagar(salarioFuncionario, minhaContaIvestimento);
-        caixaEletronico.estornarPagamento(boletoEscola, minhaContaIvestimento);
-
-        System.out.println("Boleto pago:" + boletoEscola.estapago());
-        System.out.println("Salario pago:" + salarioFuncionario.estapago());
+            contaEspecial.sacar(51.000, 10);
+            contaEspecial.debitarTarifaMensal();
 
 
-        caixaEletronico.impressaoSaldo(minhaContaIvestimento);
+            Boleto boletoEscola = new Boleto(titular2, 35000);
+            Holerite salarioFuncionario = new Holerite(titular2, 100, 16);
+
+            System.out.println("Boleto pago:" + boletoEscola.estapago());
+
+
+            caixaEletronico.pagar(boletoEscola, contaEspecial);
+            caixaEletronico.pagar(salarioFuncionario, minhaContaIvestimento);
+            caixaEletronico.estornarPagamento(boletoEscola, minhaContaIvestimento);
+
+            System.out.println("Boleto pago:" + boletoEscola.estapago());
+            System.out.println("Salario pago:" + salarioFuncionario.estapago());
+
+            boletoEscola.imprimirRecibo();
+            salarioFuncionario.imprimirRecibo();
+
+        }catch (SaldoInsuficienteException e){
+            System.out.println("Erro ao executar operação na conta: "+ e.getMessage());
+        }
+
+
+            caixaEletronico.impressaoSaldo(minhaContaIvestimento);
+
 
         /*System.out.println("Titular conta investimento: " + minhaContaIvestimento.getTitular().getNome());
         System.out.println("Titular conta investimento: " + minhaContaIvestimento.getSaldo());
